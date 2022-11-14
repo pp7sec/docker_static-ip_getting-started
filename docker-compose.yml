@@ -1,9 +1,9 @@
 version: "3.0"
 
 networks:
-  frontend:
+  my-networks:
     driver: bridge
-    name: getting-started
+    name: getting-started #networks_name
     ipam:
       driver: default
       config:
@@ -15,8 +15,8 @@ services:
     image: docker/getting-started:latest
     container_name: getting-started
     networks:
-      frontend:
-        ipv4_address: 192.168.121.2
+      my-networks:
+        ipv4_address: 192.168.121.2 #static_ip
     ports:
       - 8880:80
     restart: unless-stopped
