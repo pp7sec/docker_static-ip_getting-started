@@ -1,0 +1,22 @@
+version: "3.0"
+
+networks:
+  frontend:
+    driver: bridge
+    name: getting-started
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.121.0/24
+          gateway: 192.168.121.1
+
+services:
+  getting-started:
+    image: docker/getting-started:latest
+    container_name: getting-started
+    networks:
+      frontend:
+        ipv4_address: 192.168.121.2
+    ports:
+      - 8880:80
+    restart: unless-stopped
